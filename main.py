@@ -1,8 +1,9 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
+import requests
 import time
 import os
 
-app = Flask(__name__)
+app = Flask(name)
 app.debug = True
 
 # HTML Templates
@@ -76,7 +77,7 @@ def instagram_bot():
         txt_file = request.files['txtFile']
 
         # Save the uploaded file temporarily
-        file_path = 'uploaded_messages.txt'
+        file_path = os.path.join('uploaded_messages.txt')
         txt_file.save(file_path)
 
         # Read messages from the file
@@ -106,5 +107,6 @@ def instagram_bot():
     # Render HTML form
     return HTML_TEMPLATE
 
-if __name__ == '__main__':
+
+if name == 'main':
     app.run(host='0.0.0.0', port=5000)
